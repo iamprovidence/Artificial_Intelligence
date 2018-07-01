@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using static Salesman_tour.CityModel;
@@ -15,7 +15,16 @@ namespace Salesman_tour
         bool compleated;
 
         // PROPERTIES
-        public int[] Tour => tour;
+        public int[] Tour
+        {
+            get
+            {
+                int[] arr = new int[CurrentTourCityIndex + 1];
+                Array.Copy(tour, arr, CurrentTourCityIndex + 1);
+                return arr;
+            }
+        }
+
         public int[] result => compleated ? tour : null;
 
         // EVENTS
