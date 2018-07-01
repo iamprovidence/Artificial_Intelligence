@@ -439,7 +439,7 @@ namespace Salesman_tour
 
 
         // TODO
-
+// change every int[] into List<int>, add to population method AddCity
         private void SetNewCityMap_MouseDown(object sender, MouseEventArgs e)
         {
             // isGenerated = false;
@@ -455,13 +455,6 @@ namespace Salesman_tour
                                       CitiesMap: Cities);
             StartCityUpDown.Maximum = CityAmount;
 
-        }
-
-        private void clearToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            isGenerated = false;
-            Clear();
-            //Cities = null;
         }
     }
 }
