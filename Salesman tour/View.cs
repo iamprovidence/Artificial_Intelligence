@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Drawing;
@@ -13,7 +13,6 @@ namespace Salesman_tour
     {
         // FIELDS
         Graphics graphic;
-        GraphicsState mapState;
         Pen CityRedPen;
         Pen CityBluePen;
         Pen WayBlackPen;
@@ -188,11 +187,20 @@ namespace Salesman_tour
             DrawMap();
         }
         // DRAWING
-        private void DrawTour(int[] Tour)
+        private void DrawPartTour(int[] Tour, Pen TourPen)
         {
             Point[] way = TourModel.GetWay(Tour, Cities);
-            graphic.DrawLines(WayBlackPen, way);
-            graphic.DrawLine(HomeWayGreenPen, way[0], way[way.Length - 1]);// sweet home
+            graphic.DrawLines(TourPen, way);
+        }
+        private void DrawTour(int[] Tour, Pen TourPen, Pen HomeWay)
+        {
+            Point[] way = TourModel.GetWay(Tour, Cities);
+            graphic.DrawLines(TourPen, way);
+            graphic.DrawLine(HomeWay, way[0], way[way.Length - 1]);// sweet home
+        }
+        private void DrawTour(int[] Tour)
+        {
+            DrawTour(Tour, WayBlackPen, HomeWayGreenPen);
         }
         private void DrawTour(int[] Tour, double Cost)
         {
@@ -204,10 +212,13 @@ namespace Salesman_tour
             // -1 because offset
             graphic.DrawEllipse(pen, city.X - 1, city.Y - 1, 2, 2);
         }
-        private void DrawMap()
+        private void Clear()
         {
             graphic.Clear(Color.White);
-
+        }
+        private void DrawMap()
+        {
+            Clear();
             for (int i = 0; i < Cities.Length; ++i)
             {
                 DrawCity(Cities[i], CityRedPen);
@@ -253,7 +264,7 @@ namespace Salesman_tour
             DrawMap();
             UnlockInterface(false);
             RunHillClimbingAlgorithmIterAsync();
-            //RunHillClimbingAlgorithmAsync();
+            // RunHillClimbingAlgorithmAsync(); dont see the right way to implement chosen tour
         }
         /* Refused, seems bad to me
          * delegate void SalesmanAlgo();
@@ -321,38 +332,23 @@ namespace Salesman_tour
             }, TaskCreationOptions.LongRunning);
             UnlockInterface(true);
         }
-        
-        
-
-
-
-
-
-
-
-
-
-
-
-        // TODO
-
-        
 
         private async void RunHillClimbingAlgorithmIterAsync()
         {
             await Task.Factory.StartNew((object MutationRate) =>
             {
-                mapState = graphic.Save();
-                
-
-
                 HillClimbing evr = new HillClimbing(Cities: Cities, StartedCity: StartCityIndex);
                 
                 foreach (HillClimbingArgs evrRes in evr.RunIter())
                 {
+                    if (evr.Tour.Length > 1) // tour can only be if there are two and more cities
+                    {
+                        DrawPartTour(evr.Tour, ChoosenCityBlackPen);
+                    }
                     if (evrRes.IsChosen)
                     {
                         graphic.DrawLine(ChoosenCityBlackPen, Cities[evrRes.CurrentCityIndex].Coordinate, Cities[evrRes.NextCityIndex].Coordinate);
+
                         Invoke((Action)delegate { DistanceToolStripStatusLabel.Text = "shortest distance = " + evrRes.Distance.ToString(DoubleNumberFormat); });
 
                         Thread.Sleep(delay);
@@ -369,6 +365,8 @@ namespace Salesman_tour
                     {
                         return;
                     }
+                    // Clean up
+                    DrawMap();
                 }
                 int[] tour = evr.result;
 
@@ -383,7 +381,8 @@ namespace Salesman_tour
             UnlockInterface(true);
             DistanceToolStripStatusLabel.Text = String.Empty;
         }
-
+        // As an option
+        // Does not left selected path
         delegate int[] SalesmanTour();
         private void RunHillClimbingAlgorithmAsync()
         {
@@ -410,19 +409,16 @@ namespace Salesman_tour
                 });
             }, null);
         }
-
-        int prevCityIndex = 0;
+        
         private void WritePossibleCity(object sender, HillClimbingArgs e)
         {
-            /*
-            graphic.DrawLine(new Pen(Color.White), Cities[e.CityIndex].Coordinate, Cities[prevCityIndex].Coordinate);
-            prevCityIndex = e.NextCityIndex;*/
-
-            //graphic.Restore(mapState);
+           
             if (!run)
             {
                 Thread.CurrentThread.Abort();
             }
+            
+            DrawMap();// Clean Up
             graphic.DrawLine(PossibleCityBluePen, Cities[e.CurrentCityIndex].Coordinate, Cities[e.NextCityIndex].Coordinate);
             Invoke((Action) delegate { DistanceToolStripStatusLabel.Text = "distance = " + e.Distance.ToString(DoubleNumberFormat); } );
             Thread.Sleep(delay / 10);
@@ -430,20 +426,19 @@ namespace Salesman_tour
 
         private void WriteCity(object sender, HillClimbingArgs e)
         {
-            //graphic.Restore(mapState);
             if (!run)
             {
                 Thread.CurrentThread.Abort();
             }
+
+            DrawMap();// Clean Up
             graphic.DrawLine(ChoosenCityBlackPen, Cities[e.CurrentCityIndex].Coordinate, Cities[e.NextCityIndex].Coordinate);
             Invoke((Action)delegate { DistanceToolStripStatusLabel.Text = "shortest distance = " + e.Distance.ToString(DoubleNumberFormat); });
             Thread.Sleep(delay);
-
-            // mapState = graphic.Save();
         }
 
 
-
+        // TODO
 
         private void SetNewCityMap_MouseDown(object sender, MouseEventArgs e)
         {
@@ -462,11 +457,11 @@ namespace Salesman_tour
 
         }
 
-
-
-
-        
-        
-        
+        private void clearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            isGenerated = false;
+            Clear();
+            //Cities = null;
+        }
     }
 }
