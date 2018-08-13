@@ -3,7 +3,7 @@ class Rocket
   // CONST
   final private float maxSpeed = 3;
   final private float maxForce = 0.2;
-  final private float mutationRate = 0.01;// chance for see distance to slightly change   
+  final private float mutationRate = 0.5;// chance for see distance and health to slightly change   
   
   // FIELDS
   private PVector position;
@@ -192,18 +192,6 @@ class Rocket
     
     this.steerTo(objects.getPosition(closestIndex));
   }
-  PVector getPosition()
-  {
-    return position;
-  }
-  float getHealth()
-  {
-    return health;
-  }
-  public boolean isDead()
-  {
-    return health <= 0;
-  }
   Rocket clone()
   {
     Rocket clone = new Rocket(position.x, position.y);
@@ -212,10 +200,25 @@ class Rocket
   }
   Rocket mutate()
   {
-    if(random(1) < mutationRate)
-    {
-      seeDistance += random(2, 2);
-    }
+    if(random(1) < mutationRate) seeDistance += random(-2, 2);
+    if(random(1) < mutationRate) health = random(-2, 2);
     return this;
+  }
+  // GETS
+  public boolean isDead()
+  {
+    return health <= 0;
+  }
+  PVector getPosition()
+  {
+    return position;
+  }
+  float getHealth()
+  {
+    return health;
+  }
+  int getRadius()
+  {
+    return radius;
   }
 }
