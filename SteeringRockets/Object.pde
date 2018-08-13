@@ -31,7 +31,7 @@ abstract class Object
   
   boolean checkCollision(Rocket r)
   {
-    return dist(r.position.x, r.position.y, x, y) < 5;
+    return dist(r.position.x, r.position.y, x, y) < r.getRadius();
   }
   void setRandomPosition()
   {
