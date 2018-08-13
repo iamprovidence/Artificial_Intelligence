@@ -201,7 +201,7 @@ class Rocket
   Rocket mutate()
   {
     if(random(1) < mutationRate) seeDistance += random(-2, 2);
-    if(random(1) < mutationRate) health = random(-2, 2);
+    if(random(1) < mutationRate) health += random(-2, 2);
     return this;
   }
   // GETS
