@@ -1,8 +1,3 @@
-/*
-* Snake evolution!!! By me, the avocado boi
-* http://www.bjornsundin.com
-*/
-
 //------------------------------------------------------------------------------------------------------
 // User modifyable parameters
 
