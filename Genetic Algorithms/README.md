@@ -131,7 +131,8 @@ Not necessarily all parts of the algorithm must be present in the code. Some ste
   - Brain (chromosomes, DNA, phenotype, genotype) — variables which stored the data of representer
 * **Names of function**
   - Initialization() (Randomize()) — a function that implement the initialization operator
-  - Calculate fitness() — a function that implement the evaluating operator
+  - Calculate fitness() (Fitness function()) — a function that implement the evaluating operator
   - Selection() — a function that implement the selection operator
   - Crossover() (Grow children(), Clone()) — a function that implement the propagation operator
   - Mutate() (Transform()) — a function that implement the mutation operator
+  - Normalization() — a function that changes fitness value within the specified limits
