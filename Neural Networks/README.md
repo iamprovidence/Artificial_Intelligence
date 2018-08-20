@@ -9,8 +9,8 @@ For example, in image recognition, they might learn to identify images that cont
   - [Brain](#brain)
   - [Neuron](#neuron)
 * [Components](#components)
-  - Layer
-  - Connections
+  - [Connections] (#connections)
+  - [Layer](#layer)
   - Neuron
     - Activation function
     - Sum up function
@@ -57,6 +57,30 @@ Let's simplify brain image. All we need is *neurons* (cirlces) and *connection* 
 </p>
 Now we can describe each component one by one.
 
+### Connections
+
+There are **connections** between neurons.
+
+The connection has **weight**. It is usualy a value in range [-1; 1].
+
+Stronger connection transfer more signal.
+
+### Layer
+
+Neurons are placed on **layers**:
+
+* The first level of neurons called **input layer**.
+* The middle levels of neurons called **hidden layer**.
+* The last level of neurons called **output layer**.
+
+<p align="center">
+  <img src="http://seas.ucla.edu/~kao/images/nn.png">
+</p>
+
+The connections between neurons are traditionally spread only by one layer.
+
+Each next hidden layer combines the features of the previous one.
+
 ### Neuron
 An artificial neuron is a model of biological neurons. Artificial neurons are elementary units in an artificial neural network. 
 
@@ -74,3 +98,13 @@ The neuron consist of the following components:
 #### Activation function
 
 #### Sum up function
+
+## Glossary
+
+* **Terms**
+  - layer — the cols where neurons are placed
+  - input layer — the first layer of neurons
+  - hidden layer — the middle layers of neurons
+  - output layer — the last layer of neurons
+  - connection — the connection between the neurons through which energy is transmitted
+  - connection weight — determines how strong is the connection between neurons 
