@@ -9,7 +9,7 @@ For example, in image recognition, they might learn to identify images that cont
   - [Brain](#brain)
   - [Neuron](#neuron)
 * [Components](#components)
-  - [Connections] (#connections)
+  - [Connections](#connections)
   - [Layer](#layer)
   - Neuron
     - Activation function
