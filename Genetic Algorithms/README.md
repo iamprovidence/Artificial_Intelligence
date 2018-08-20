@@ -1,6 +1,16 @@
 # Genetic Algorithm
 
 Genetic algorithms are commonly used to generate high-quality solutions to optimization and search problems by relying on bio-inspired operators such as *mutation*, *crossover* and *selection*.
+# Contents
+* [Steps](#Steps)
+  - [Initialization](#Initialization)
+  - [Evaluation](#Evaluation)
+  - [Selection](#Selection)
+  - [Crossover](#Crossover)
+  - [Mutation](#Mutation)
+  - [Termination](#Termination)
+* [Remark](#Remark)
+* [Glossary](#Glossary)
 
 ## Steps
 Basically, all process can be described as selecting better solution from better solution.
