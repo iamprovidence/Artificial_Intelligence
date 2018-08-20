@@ -25,7 +25,7 @@ The function should not be linear, but rather **exponential**. Then even small i
 
 The fitness function must not only correlate closely with the designer's goal, it must also be computed quickly. **Speed of execution** is very important, as a typical genetic algorithm must be iterated many times in order to produce a usable result for a non-trivial problem.
 
-**Examples** of fitness function:
+**Examples** of fitness algorithms:
 * how close computer was to the target
   - if aim the target, how many step it takes
 * how much time user spend on category that computer has proposed
@@ -41,7 +41,7 @@ During each successive generation, a portion of the existing population is selec
 
 There are a lot of ways to select representer but the main idea is **"survive the strongest"**.
 
-**Examples** of selection function:
+**Examples** of selection algorithms:
 * *elitist selection* — the population is sorted by descending fitness values. Tnen first **N** representers survive
 * *tournament selection* — select **N** times, **k** (usually = 2) random representer and compare their fitness value. The one with better adaptability survives 
 * *roulette-wheel selection* — each representer has a chance to be selected
@@ -64,21 +64,28 @@ The main function of this stage is to mix the features of the parents in proper 
   - one parent (cloning) 
   - two parents (traditional)
   - many parents 
-* Algorithm 
+* Algorithms
   - select random feature from parents
   - select half of features from first parent and half from second
   - select crossover point (not necessarily one), by which feater from parents will be choosen
   ![](https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/TwoPointCrossover.svg/226px-TwoPointCrossover.svg.png)
+  - if there are more than two parents you can do crossover with all parent or pair with two(not necessarily) until each parent takes part
   - etc
- 
+  
 There are a lot of ways to **store data**:
   * varibles
-  * array
+  * array (sometimes called **chromosomes**)
   * encapsulate in **Brain** class
   * encapsulate in **DNA** class
   * etc
 
-The data is the choice between a **phenotype**(how it behaves) and a **genotype**(how it looks).
+The data is the choice between a **phenotype** (how it behaves) and a **genotype** (how it looks).
+
+**Remark**
+
+In some genetic algorithms, not all possible chromosomes represent valid solutions. In some cases, it is possible to use specialized crossover and mutation operators that are designed to avoid violating the constraints of the problem. 
+
+For example, a genetic algorithm solving the travelling salesman problem may use an ordered list of cities to represent a solution path. Such a chromosome only represents a valid solution if the list contains all the cities that the salesman must visit. Using the above crossovers will often result in chromosomes that violate that constraint. Genetic algorithms optimizing the ordering of a given list thus require different crossover operators that will avoid generating invalid solutions.
   
 ### Mutation
 
@@ -86,7 +93,7 @@ The mutation process slightly changes the data.
 
 The problem of genetic algorithms is the lack of diversity in individuals. So you probably want to choose not from selected population but from all population *or* increase mutation rate. 
 
-Varieties of mutations:
+**Varieties** of mutations:
 * the population has **N** mutants
 * everyone is slightly mutant
 * everyone has a slight chance to mutate
@@ -104,3 +111,26 @@ Common terminating **conditions** are:
 * manual inspection
 * combinations of the above
 * etc
+
+## Remark
+
+Not necessarily all parts of the algorithm must be present in the code. Some steps may be missed, some — implemented in pairs.
+
+## Glossary
+* **Terms**
+  - Population — a special data structure which contain all the organisms of the same group and functions for the work of the genetic algorithm
+  - Individual (Representer) — a special data structure which represent an individual of population, and meets all the rules of the algorithm
+  - Generation — the period during which one iteration of the genetic algorithm occurs
+* **Names of variables**
+  - Generation count — the number of iterations made by the genetic algorithm
+  - Max generation — the maximum number of iterations of the genetic algorithm, often a sign of the completion of the algorithm
+  - Population size — the constant size of the population in each generation after selection
+  - Children amount — the number of children in each individual after crossing, could be common to the entire population or different for every representer
+  - Mutation rate — the number of changes in the offspring, more often as the chance of change
+  - Fitness value — adaptability of the individual, determine the chance to go to a new generation or grow children
+* **Names of function**
+  - Initialization() (Randomize()) — a function that implement the initialization operator
+  - Calculate fitness() — a function that implement the evaluating operator
+  - Selection() — a function that implement the selection operator
+  - Crossover() (Grow children(), Clone()) — a function that implement the propagation operator
+  - Mutate() (Transform()) — a function that implement the mutation operator
