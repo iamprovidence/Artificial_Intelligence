@@ -8,7 +8,7 @@ For example, in image recognition, they might learn to identify images that cont
 * [Biology](#biology)
   - [Brain](#brain)
   - [Neuron](#neuron)
-* Components
+* [Components](#components)
   - Neuron
     - Activation function
     - Sum up function
@@ -51,9 +51,26 @@ Some connections between neurons are stronger than other.  Stronger connection t
 </p>
 
 ## Components
-Let's simplify brain image. All we need is neurons (cirlces) and connection between them (lines).
+Let's simplify brain image. All we need is *neurons* (cirlces) and *connection* between them (lines).
 <p align="center">
   <img src="https://files.phpclasses.org/files/blog/file/Neural-Network.png">
 </p>
 Now we can describe each component one by one.
+
 ### Neuron
+An artificial neuron is a model of biological neurons. Artificial neurons are elementary units in an artificial neural network. 
+
+The artificial neuron receives one or more inputs and sums them to produce an output.
+
+<p align="center">
+  <img src="https://natureofcode.com/book/imgs/chapter10/ch10_03.png">
+</p>
+
+The neuron consist of the following components:
+
+* an activation function
+* an output function, also known as sum up function
+
+#### Activation function
+
+#### Sum up function
