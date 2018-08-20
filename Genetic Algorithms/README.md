@@ -130,7 +130,7 @@ For example:
 * if representer clone itself over time, there is no needs in fitness function, the longer they live, the higher chance to do cloning
 * if task has only one solution, it could be no mutation at all
 * the evaluation, selection, crossovering and mutation could be implemented as one algorithm
-* the order: crossovering, mutation, evaluation and selction is still valid
+* the order: crossovering, mutation, evaluation and selection is still valid
 * etc
 
 
