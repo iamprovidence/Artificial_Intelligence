@@ -9,11 +9,11 @@ For example, in image recognition, they might learn to identify images that cont
   - [Brain](#brain)
   - [Neuron](#neuron)
 * [Components](#components)
+  - Layer
+  - Connections
   - Neuron
     - Activation function
     - Sum up function
-  - Layer
-  - Connections
   - Bias
   - Algorithms
     - Feed forward
