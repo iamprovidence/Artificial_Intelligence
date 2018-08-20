@@ -146,7 +146,7 @@ For example:
   - Children amount — the number of children in each individual after crossing, could be common to the entire population or different for every representer
   - Mutation rate — the number of changes in the offspring, more often as the chance of change
   - Fitness value — adaptability of the individual, determine the chance to go to a new generation or grow children
-  - Brain (chromosomes, DNA, phenotype, genotype) — variables which stored the data of representer
+  - Brain (genome, perceptron, chromosomes, DNA, phenotype, genotype) — variables which stored the data of representer
 * **Names of function**
   - Initialization() (Randomize()) — a function that implement the initialization operator
   - Calculate fitness() (Fitness function()) — a function that implement the evaluating operator
