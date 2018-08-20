@@ -114,7 +114,15 @@ Common terminating **conditions** are:
 
 ## Remark
 
-Not necessarily all parts of the algorithm must be present in the code. Some steps may be missed, some — implemented in pairs.
+Not necessarily all parts of the algorithm must be present in the code. Some steps may be missed, some — implemented in pairs. You also can add your own functions.
+
+For example:
+* if representer clone itself over time, there is no needs in fitness function, the longer they live, the higher chance to do cloning
+* if task has only one solution, it could be no mutation at all
+* the evaluation, selection, crossovering and mutation could be implemented as one algorithm
+* the order: crossovering, mutation, evaluation and selction is still valid
+* etc
+
 
 ## Glossary
 * **Terms**
@@ -133,6 +141,6 @@ Not necessarily all parts of the algorithm must be present in the code. Some ste
   - Initialization() (Randomize()) — a function that implement the initialization operator
   - Calculate fitness() (Fitness function()) — a function that implement the evaluating operator
   - Selection() — a function that implement the selection operator
-  - Crossover() (Grow children(), Clone()) — a function that implement the propagation operator
+  - Crossover() (Grow children(), Clone(), Copy()) — a function that implement the propagation operator
   - Mutate() (Transform()) — a function that implement the mutation operator
   - Normalization() — a function that changes fitness value within the specified limits
