@@ -50,4 +50,10 @@ Some connections between neurons are stronger than other.  Stronger connection t
   <img src="http://bcs.whfreeman.com/webpub/Ektron/Hillis%20Principles%20of%20Life2e/Animated%20Tutorials/pol2e_at_3404_neurons_and_synapses/img/neurons.png">
 </p>
 
-
+## Components
+Let's simplify brain image. All we need is neurons (cirlces) and connection between them (lines).
+<p align="center">
+  <img src="https://files.phpclasses.org/files/blog/file/Neural-Network.png">
+</p>
+Now we can describe each component one by one.
+### Neuron
