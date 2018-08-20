@@ -3,7 +3,7 @@
 Genetic algorithms are commonly used to generate high-quality solutions to optimization and search problems by relying on bio-inspired operators such as *mutation*, *crossover* and *selection*.
 
 ## Steps
-
+Basically, all process can be described as selecting better solution from better solution.
 <p align="center">
   <img src="https://www.researchgate.net/profile/John_Geraghty2/publication/236179246/figure/fig1/AS:299498850013187@1448417498772/Genetic-algorithm-procedure-for-TSP.png">
 </p>
@@ -13,7 +13,7 @@ Genetic algorithms are commonly used to generate high-quality solutions to optim
 3. Selection 
 4. Crossover
 5. Mutation
-6. Repeat until done
+6. Termination
 
 ### Initialization
 The population size depends on the nature of the problem, but typically contains several hundreds or thousands of possible solutions. Often, the initial population is generated **randomly**, allowing the entire range of possible solutions (the search space). Occasionally, the solutions may be "seeded" in areas where optimal solutions are likely to be found.
@@ -53,6 +53,54 @@ There are a lot of ways to select representer but the main idea is **"survive th
 
 ### Crossover
 
+For each new solution to be produced, a pair of "parent" solutions is selected for breeding from the pool selected previously. By producing a "child" solution using the above methods of crossover, a new solution is created which typically shares many of the characteristics of its "parents". New parents are selected for each new child, and the process continues until a new population of solutions of appropriate size is generated. 
+
+**Algorithm for choosing parents** is often similiar to selection algorithm. 
+
+The main function of this stage is to mix the features of the parents in proper way.
+
+**Type** of crossovers:
+* Parent amount
+  - one parent (cloning) 
+  - two parents (traditional)
+  - many parents 
+* Algorithm 
+  - select random feature from parents
+  - select half of features from first parent and half from second
+  - select crossover point (not necessarily one), by which feater from parents will be choosen
+  ![](https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/TwoPointCrossover.svg/226px-TwoPointCrossover.svg.png)
+  - etc
+ 
+There are a lot of ways to **store data**:
+  * varibles
+  * array
+  * encapsulate in **Brain** class
+  * encapsulate in **DNA** class
+  * etc
+
+The data is the choice between a **phenotype**(how it behaves) and a **genotype**(how it looks).
+  
 ### Mutation
 
-### Repeating
+The mutation process slightly changes the data.
+
+The problem of genetic algorithms is the lack of diversity in individuals. So you probably want to choose not from selected population but from all population *or* increase mutation rate. 
+
+Varieties of mutations:
+* the population has **N** mutants
+* everyone is slightly mutant
+* everyone has a slight chance to mutate
+* no mutants at all
+
+### Termination
+
+This generational process is repeated until a termination condition has been reached. 
+
+Common terminating **conditions** are:
+* a solution is found that satisfies minimum criteria
+* fixed number of generations reached
+* allocated budget (computation time/money) reached
+* the highest ranking solution's fitness is reaching or has reached a plateau such that successive iterations no longer produce better results
+* manual inspection
+* combinations of the above
+* etc
