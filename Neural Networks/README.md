@@ -32,7 +32,7 @@ It contains millions of *neuron*s that are interconnected.
 
 They *send* to the body and *receive* electrical signals from it.
 <p align="center">
-  <img src="https://fac.img.pmdstatic.net/fit/http.3A.2F.2Fwww.2Efemmeactuelle.2Efr.2Fvar.2Ffemmeactuelle.2Fstorage.2Fimages.2Fsante.2Fsante-pratique.2Fsla-maladie-de-charcot-22714.2F13558466-1-fre-FR.2Fla-sla-ou-maladie-de-charcot-une-affection-degenerative.2Ejpg/748x372/quality/80/crop-from/center/la-sla-ou-maladie-de-charcot-une-affection-degenerative.jpeg">
+  <img src="/readme Imgs/neural network/brain.jpeg">
 </p>
 
 ### Neuron
@@ -47,13 +47,13 @@ If neuron receives enough electrical signal, it starts to transmit it forward.
 Some connections between neurons are stronger than other.  Stronger connection transfer more signal.
 
 <p align="center">
-  <img src="http://bcs.whfreeman.com/webpub/Ektron/Hillis%20Principles%20of%20Life2e/Animated%20Tutorials/pol2e_at_3404_neurons_and_synapses/img/neurons.png">
+  <img src="/readme Imgs/neural network/neurons.png">
 </p>
 
 ## Components
 Let's simplify brain image. All we need is *neurons* (cirlces) and *connection* between them (lines).
 <p align="center">
-  <img src="https://files.phpclasses.org/files/blog/file/Neural-Network.png">
+  <img src="/readme Imgs/neural network/Neural-Network.png">
 </p>
 Now we can describe each component one by one.
 
@@ -74,7 +74,7 @@ Neurons are placed on **layers**:
 * The last level of neurons called **output layer**.
 
 <p align="center">
-  <img src="http://seas.ucla.edu/~kao/images/nn.png">
+  <img src="/readme Imgs/neural network/nn_layer.png">
 </p>
 
 The connections between neurons are traditionally spread only by one layer.
@@ -87,7 +87,7 @@ An artificial neuron is a model of biological neurons. Artificial neurons are el
 The artificial neuron receives one or more inputs and sums them to produce an output.
 
 <p align="center">
-  <img src="https://natureofcode.com/book/imgs/chapter10/ch10_03.png">
+  <img src="/readme Imgs/neural network/neuron.png">
 </p>
 
 The neuron consist of the following components:
