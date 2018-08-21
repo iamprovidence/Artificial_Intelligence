@@ -176,7 +176,7 @@ For this problems we need more than one neuron. That a reson why we combine neur
 Now when we know that we can teach neural network to solve linearly separable problems, let's look how good it will classify points as living on either one side of the line or the other.
 
 <p align="center">
-  <img height="100" width="125" src="/readme Imgs/neural network/coordinate.gif">
+  <img src="/readme Imgs/neural network/coordinate.gif">
 </p>
 
 This task is not hard but what about point (0, 0). No matter what the inputs weights are, the result of the *Sum Up* function will always be **0**. But this can’t be right — after all, the point (0,0) could certainly be above or below various lines in our two-dimensional world.
@@ -186,7 +186,7 @@ To avoid this dilemma, our neuron will require a third input, typically referred
 A bias input traditionall has the value of 1 and is also weighted.
 
 <p align="center">
-  <img height="100" width="125" src="/readme Imgs/neural network/bias.png">
+  <img src="/readme Imgs/neural network/bias.png">
 </p>
 
 ## Glossary
