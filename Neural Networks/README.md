@@ -15,6 +15,7 @@ For example, in image recognition, they might learn to identify images that cont
     - Sum up function
     - Activation function
     - Output
+    - [Abilities](#abilities)
   - Bias
   - Algorithms
     - Propagation (Feed forward)
@@ -134,6 +135,8 @@ The most common.
 
 Relu is the most used.
 
+Coding example:
+
 ```C#
 private int Step(float x)
 {
@@ -148,11 +151,26 @@ The the whole process(output) for a single neuron look like this :
 <img src="/readme Imgs/neural network/neuron_output.svg"> 
 
 ```C#
-int Output(float[] inputs)
+public int Output(float[] inputs)
 {
    return activationFunction(sumUp(inputs));
 }
 ```
+
+#### Abilities
+
+It was prooved that a single neuron can only solve *linearly separable problems*. Basicaly, something that you can divide with one line.
+<p align="center">
+  <img height="100" width="125" src="/readme Imgs/neural network/linear_sep.svg">
+  <img height="100" width="350" src="/readme Imgs/neural network/and_or.png">
+</p>
+But there are a lot of tasks that we cannot solve only with one line.
+<p align="center">
+  <img height="100" width="125" src="/readme Imgs/neural network/lns.svg">
+  <img height="100" width="400" src="/readme Imgs/neural network/xor.png">
+</p>
+For this problems we need more than one neuron. That a reson why we combine neurons in neural networks.
+
 ## Glossary
 
 * **Terms**
@@ -162,3 +180,4 @@ int Output(float[] inputs)
   - output layer — the last layer of neurons
   - connection — the connection between the neurons through which energy is transmitted
   - connection weight — determines how strong is the connection between neurons 
+  - linearly separable problem — problem that you can solve by divided it with one line.
