@@ -175,6 +175,8 @@ For this problems we need more than one neuron. That a reson why we combine neur
 
 Now when we know that we can teach neural network to solve linearly separable problems, let's look how good it will classify points as living on either one side of the line or the other.
 
+The first input would be *X* value, the second — *Y* value. The result *0* or *1* depending on the category.
+
 <p align="center">
   <img src="/readme Imgs/neural network/coordinate.gif">
 </p>
