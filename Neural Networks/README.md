@@ -256,6 +256,57 @@ public void train(float[] inputs, int target)
 }
 ```
 
+### Algorithms
+
+All algorithm that we used for a single neuron a still valid or a neural network. But now we operate not values but matrices. 
+
+Now we want to think about bias as additional neuron in each layer except the last one.
+
+#### Propagation (Feed forward)
+
+As was mentioned previous, single neuron receives inputs and sends outputs with sum up and actibation functions help.
+
+Propagation, also known as feed forward algorithm doing the same but not with one neuron but with whole layer of neurons.
+
+We have are vector of inputs in first layer, bias as last neuron, all connection weights to next layer and we want to find the values of neurons in next layer after activation in this layer and repeat this until we get outputs values.
+
+<p align="center">
+  <img src="/readme Imgs/neural network/propagation/img.png">
+</p>
+
+All we need is to take each input, multiply it by its weight and apply activation function. But we don't have one input and array of weights, we have many inputs so let's think about them as a vector and matrix of weights.
+
+<p align="center">
+  <img src="/readme Imgs/neural network/propagation/form.png">
+</p>
+
+Since, bias is constant value and only bias's weights metter we can think of it as a separate component.
+
+After applying activation function formula looks:
+<p align="center">
+  <img src="/readme Imgs/neural network/propagation/mainF.png">
+</p>
+
+Coding example:
+```C#
+private double[] output(double[] input)
+{
+    Vector input = new Vector(input);
+
+    for (int i = 0; i < weights.Length; ++i)
+    {
+        input = activationFunction(weights[i] * input + biases[i]);
+    }
+
+    return inputForNextLayer.ToArray();
+}
+```
+
+
+#### Backpropagation
+
+
+
 ## Glossary
 
 * **Terms**
