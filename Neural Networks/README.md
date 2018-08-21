@@ -395,5 +395,5 @@ Neural network training is not just about adjusting weights, it also include add
 * **Names of function**
   - Sum up (output) function — sum up all signal that neuron recieves
   - Activation function — defines the threshold for the neuron activating
-  - Propagation (Feed forward) — algorithm for signal transmission from first to last layer
+  - Propagation (Feed forward, Querying) — algorithm for signal transmission from first to last layer
   - Backpropagation — algorithm for determininng neuron's error and tune weight
