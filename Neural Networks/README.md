@@ -12,11 +12,12 @@ For example, in image recognition, they might learn to identify images that cont
   - [Connections](#connections)
   - [Layer](#layer)
   - Neuron
-    - Activation function
     - Sum up function
+    - Activation function
+    - Output
   - Bias
   - Algorithms
-    - Feed forward
+    - Propagation (Feed forward)
     - Backpropagation
   - Learning rule
 * Remark
@@ -90,15 +91,68 @@ The artificial neuron receives one or more inputs and sums them to produce an ou
   <img src="/readme Imgs/neural network/neuron.png">
 </p>
 
+If neuron receives enough energy(or depending on time), it starts to transmit it forward.
+
 The neuron consist of the following components:
 
-* an activation function
 * an output function, also known as sum up function
+* an activation function
+
+
+#### Sum up function
+Take each input and multiply it by its weight: <img src="/readme Imgs/neural network/sum_up.svg"> 
+
+```C#
+private float SumUp(float[] inputs)
+{
+    float sum = 0; 
+    for(int i = 0; i < inputs.length; ++i)
+    {
+        sum += weights[i] * inputs[i];
+    }
+    return sum;
+}
+```
 
 #### Activation function
 
-#### Sum up function
+Вefines the threshold for the neuron activating.
 
+It is usualy a value in range [-1; 1] or [0; 1].
+
+**Examples:**
+
+The most common. 
+
+| Name  | Plot | Equation | Derivative |
+| ------------- | ------------- | ------------- | ------------- |
+| Identity | <img src="/readme Imgs/neural network/Activation Function/Identity/img.svg"> | <img src="/readme Imgs/neural network/Activation Function/Identity/func.svg"> | <img src="/readme Imgs/neural network/Activation Function/Identity/deriv.svg">  |
+| Relu | <img src="/readme Imgs/neural network/Activation Function/Relu/img.svg"> | <img src="/readme Imgs/neural network/Activation Function/Relu/func.svg"> | <img src="/readme Imgs/neural network/Activation Function/Relu/deriv.svg">  |
+| Sigmoid | <img src="/readme Imgs/neural network/Activation Function/Sigmoid/img.svg"> | <img src="/readme Imgs/neural network/Activation Function/Sigmoid/func.svg"> | <img src="/readme Imgs/neural network/Activation Function/Sigmoid/deriv.svg">  |
+| Binary Step | <img src="/readme Imgs/neural network/Activation Function/Step/img.svg"> | <img src="/readme Imgs/neural network/Activation Function/Step/func.svg"> | <img src="/readme Imgs/neural network/Activation Function/Step/deriv.svg">  |
+| Tanh | <img src="/readme Imgs/neural network/Activation Function/Tanh/img.svg"> | <img src="/readme Imgs/neural network/Activation Function/Tanh/func.svg"> | <img src="/readme Imgs/neural network/Activation Function/Tanh/deriv.svg">  |
+
+Relu is the most used.
+
+```C#
+private int Step(float x)
+{
+   if (x > 0) return 1;
+   else return -1;
+}
+```
+
+#### Output
+
+The the whole process(output) for a single neuron look like this :
+<img src="/readme Imgs/neural network/neuron_output.svg"> 
+
+```C#
+int Output(float[] inputs)
+{
+   return activationFunction(sumUp(inputs));
+}
+```
 ## Glossary
 
 * **Terms**
