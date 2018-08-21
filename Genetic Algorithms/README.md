@@ -15,7 +15,7 @@ Genetic algorithms are commonly used to generate high-quality solutions to optim
 ## Steps
 Basically, all process can be described as selecting better solution from better solution.
 <p align="center">
-  <img src="https://www.researchgate.net/profile/John_Geraghty2/publication/236179246/figure/fig1/AS:299498850013187@1448417498772/Genetic-algorithm-procedure-for-TSP.png">
+  <img src="/readme Imgs/genetic algorithm/Genetic_algorithm_procedure.png">
 </p>
 
 1. Initialization
