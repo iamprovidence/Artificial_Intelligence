@@ -328,6 +328,7 @@ The error for the neuron — is the sum of the responsibility of the weights by 
 <p align="center">
   <img src="/readme Imgs/neural network/backpropagation/form.png">
 </p>
+
 ```C#
 Vector[] errors = new Vector[Layers.Length - 1];
 // output error, the last position
@@ -355,6 +356,7 @@ Then the weight of the connections and the biases will be tuned as follows:
 <p align="center">
   <img src="/readme Imgs/neural network/backpropagation/B.png">
 </p>
+
 ```C#
 Vector Gradient = derivative(input.Last());
 for (int i = weights.Length - 1; i >= 0; --i)
@@ -381,7 +383,7 @@ Neural network training is not just about adjusting weights, it also include add
 ## Glossary
 
 * **Terms**
-  - perceptron — is the simplest neural network possible: a computational model of a single neuron; sometimes synonym to neural network
+  - perceptron — is the simplest neural network possible: a computational model of a single neuron; sometimes synonym to neural network 
   - layer — the cols where neurons are placed
   - input layer — the first layer of neurons
   - hidden layer — the middle layers of neurons
@@ -389,6 +391,7 @@ Neural network training is not just about adjusting weights, it also include add
   - connection — the connection between the neurons through which energy is transmitted
   - connection weight — determines how strong is the connection between neurons 
   - linearly separable problem — problem that you can solve by divided it with one line.
+  - fully connected neural network — neural network in which all neurons in layer have connections to all neurons in next layer
 * **Names of function**
   - Sum up (output) function — sum up all signal that neuron recieves
   - Activation function — defines the threshold for the neuron activating
