@@ -171,6 +171,24 @@ But there are a lot of tasks that we cannot solve only with one line.
 </p>
 For this problems we need more than one neuron. That a reson why we combine neurons in neural networks.
 
+### Bias
+
+Now when we know that we can teach neural network to solve linearly separable problems, let's look how good it will classify points as living on either one side of the line or the other.
+
+<p align="center">
+  <img height="100" width="125" src="/readme Imgs/neural network/coordinate.gif">
+</p>
+
+This task is not hard but what about point (0, 0). No matter what the inputs weights are, the result of the *Sum Up* function will always be **0**. But this can’t be right — after all, the point (0,0) could certainly be above or below various lines in our two-dimensional world.
+
+To avoid this dilemma, our neuron will require a third input, typically referred to as a **bias** input. The bias is a measure of how easy it is to get the perceptron to fire. For a perceptron with a really big bias, it's extremely easy for the perceptron to output a 1. But if the bias is very negative, then it's difficult for the perceptron to output a 1. 
+
+A bias input traditionall has the value of 1 and is also weighted.
+
+<p align="center">
+  <img height="100" width="125" src="/readme Imgs/neural network/bias.png">
+</p>
+
 ## Glossary
 
 * **Terms**
