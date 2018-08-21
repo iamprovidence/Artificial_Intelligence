@@ -9,18 +9,19 @@ For example, in image recognition, they might learn to identify images that cont
   - [Brain](#brain)
   - [Neuron](#neuron)
 * [Components](#components)
+  - [Learning rule](#learning rule)
   - [Connections](#connections)
   - [Layer](#layer)
-  - Neuron
-    - Sum up function
-    - Activation function
-    - Output
+  - [Neuron](#neuron)
+    - [Sum up function](#sum-up-function)
+    - [Activation function](#activation-function)
+    - [Output](#output)
     - [Abilities](#abilities)
-  - Bias
+    - [Bias](#bias)
+    - [Training](#training)
   - Algorithms
     - Propagation (Feed forward)
     - Backpropagation
-  - Learning rule
 * Remark
 * Glossary
 
@@ -58,6 +59,12 @@ Let's simplify brain image. All we need is *neurons* (cirlces) and *connection* 
   <img src="/readme Imgs/neural network/Neural-Network.png">
 </p>
 Now we can describe each component one by one.
+
+### Learning rule
+
+The learning rule is a rule or an algorithm which modifies the parameters of the neural network, in order for a given input to the network to produce a favored output. 
+
+This learning process typically amounts to modifying the weights, thresholds of the variables or adding new neurons within the network.
 
 ### Connections
 
@@ -171,7 +178,7 @@ But there are a lot of tasks that we cannot solve only with one line.
 </p>
 For this problems we need more than one neuron. That a reson why we combine neurons in neural networks.
 
-### Bias
+#### Bias
 
 Now when we know that we can teach neural network to solve linearly separable problems, let's look how good it will classify points as living on either one side of the line or the other.
 
@@ -190,6 +197,64 @@ A bias input traditionall has the value of 1 and is also weighted.
 <p align="center">
   <img src="/readme Imgs/neural network/bias.png">
 </p>
+
+#### Training
+
+Talking about point classification task. How neutron learn classification rule? Firtly it was randomly, the neuron has no better than a 50/50 chance of arriving at the right answer. Neural network not going to be able to guess anything correctly unless we teach it how to.
+
+To train a neural network to answer correctly, we’re going to employ the method of supervised learning.
+
+The network is provided with inputs for which there is a known answer. This way the network can find out if it has made a correct guess. If it’s incorrect, the network can learn from its mistake and adjust its weights
+
+The neuron’s error can be defined as the difference between the desired answer and its guess.
+
+**ERROR = DESIRED OUTPUT - GUESS OUTPUT**
+
+It tell us how to adjusting the weights of a neural network to arrive at the right answer.
+
+If the neuron guesses the correct answer, then the guess equals the desired output and the error is 0. 
+If the correct answer is -1 and we’ve guessed +1, then the error is -2. 
+If the correct answer is +1 and we’ve guessed -1, then the error is +2.
+
+| Desired |	Guess |	Error |
+| ------- | ----- | ----- |
+|   - 1   |  - 1  |   0   |
+|   - 1   |  + 1  |  - 2  |
+|   + 1   |  - 1  |  + 2  |
+|   + 1   |  + 1  |   0   |
+
+
+For any given weight, what we are looking to calculate is the change in weight, often called Δweight.
+
+**NEW WEIGHT = WEIGHT + ΔWEIGHT**
+
+Δweight is calculated as the error multiplied by the input.
+
+**ΔWEIGHT = ERROR * INPUT**
+
+Therefore:
+
+**NEW WEIGHT = WEIGHT + ERROR * INPUT**
+
+But if we adjusted our weight too much, we would need to adhust it again. If too low, it would take a lot of time to get to the right result. To avoid this probleb we enter a variable which control learning:
+
+**NEW WEIGHT = WEIGHT + ERROR * INPUT * LEARNING CONSTANT**
+
+Coding example:
+
+```C#
+private const float leariningRate = 0.01;
+
+public void train(float[] inputs, int target)
+{
+    int error = target - this.output(inputs);
+    
+    for(int i = 0; i < weights.length; ++i)
+    {
+      weights[i] += error * inputs[i] * leariningRate;
+    }
+}
+```
 
 ## Glossary
 
