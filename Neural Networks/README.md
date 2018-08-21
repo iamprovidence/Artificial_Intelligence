@@ -298,7 +298,7 @@ private double[] output(double[] input)
         input = activationFunction(weights[i] * input + biases[i]);
     }
 
-    return inputForNextLayer.ToArray();
+    return input.ToArray();
 }
 ```
 
