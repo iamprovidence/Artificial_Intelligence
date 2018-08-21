@@ -9,7 +9,7 @@ For example, in image recognition, they might learn to identify images that cont
   - [Brain](#brain)
   - [Neuron](#neuron)
 * [Components](#components)
-  - [Learning rule](#learning rule)
+  - [Learning rule](#learning-rule)
   - [Connections](#connections)
   - [Layer](#layer)
   - [Neuron](#neuron)
@@ -19,11 +19,11 @@ For example, in image recognition, they might learn to identify images that cont
     - [Abilities](#abilities)
     - [Bias](#bias)
     - [Training](#training)
-  - Algorithms
-    - Propagation (Feed forward)
-    - Backpropagation
-* Remark
-* Glossary
+  - [Algorithms](#algorithms)
+    - [Propagation (Feed forward)](#propagation-feed-forward)
+    - [Backpropagation](#backpropagation)
+* [Remark](#remark)
+* [Glossary](#glossary)
 
 ## Biology
 As was mentioned before, neural networks is a human attempt to recreate brain. Despite the complexity of the brain, we will try to highlight only its main functions.
@@ -108,7 +108,10 @@ The neuron consist of the following components:
 
 
 #### Sum up function
-Take each input and multiply it by its weight: <img src="/readme Imgs/neural network/sum_up.svg"> 
+
+Some connections between neurons are stronger than other. Stronger connection transfer more signal.
+
+Take each input and multiply it by its weight to get how much signal this connection transfer: <img src="/readme Imgs/neural network/sum_up.svg"> 
 
 ```C#
 private float SumUp(float[] inputs)
@@ -124,7 +127,7 @@ private float SumUp(float[] inputs)
 
 #### Activation function
 
-Вefines the threshold for the neuron activating.
+Defines the threshold for the neuron activating.
 
 It is usualy a value in range [-1; 1] or [0; 1].
 
@@ -264,7 +267,7 @@ Now we want to think about bias as additional neuron in each layer except the la
 
 #### Propagation (Feed forward)
 
-As was mentioned previous, single neuron receives inputs and sends outputs with sum up and actibation functions help.
+As was mentioned previously, single neuron receives inputs and sends outputs with sum up and actibation functions help.
 
 Propagation, also known as feed forward algorithm doing the same but not with one neuron but with whole layer of neurons.
 
@@ -305,11 +308,80 @@ private double[] output(double[] input)
 
 #### Backpropagation
 
+Backpropagation — the process of redistribution and weight adjustment. 
 
+<p align="center">
+  <img src="/readme Imgs/neural network/backpropagation/backpropagation.png">
+</p>
+
+The network's error can be defined the same as the neuron's error.
+
+**ERROR = DESIRED OUTPUT - GUESS OUTPUT**
+
+The calculation of the neuron's error at the previous levels is calculated, depending on the responsibility of the neuron for the error. If connection's weight is greater then this neuron is more responsible for the error.
+
+The error for the neuron — is the sum of the responsibility of the weights by product of the neuron's error  at the next level.
+
+<p align="center">
+  <img src="/readme Imgs/neural network/backpropagation/multiply.png">
+</p>
+<p align="center">
+  <img src="/readme Imgs/neural network/backpropagation/form.png">
+</p>
+```C#
+Vector[] errors = new Vector[Layers.Length - 1];
+// output error, the last position
+errors[errors.Length - 1] = Target - Result;
+// errors
+for (int i = errors.Length - 2; i >= 0; --i)
+{
+    errors[i] = Matrix.Transpose(weights[i + 1]) * errors[i + 1];
+}
+```
+
+Then the weight of the connections and the biases will be tuned as follows:
+<p align="center">
+  <img src="/readme Imgs/neural network/backpropagation/gradient.png">
+</p>
+<p align="center">
+  <img src="/readme Imgs/neural network/backpropagation/deltaW.png">
+</p>
+<p align="center">
+  <img src="/readme Imgs/neural network/backpropagation/W.png">
+</p>
+<p align="center">
+  <img src="/readme Imgs/neural network/backpropagation/deltaB.png">
+</p>
+<p align="center">
+  <img src="/readme Imgs/neural network/backpropagation/B.png">
+</p>
+```C#
+Vector Gradient = derivative(input.Last());
+for (int i = weights.Length - 1; i >= 0; --i)
+{
+    // neuron in input to output layer
+    Vector changes = learningRate * errors[i] * Gradient;
+    biases[i] += changes;
+    weights[i] += changes * Vector.Transpose(input[i]);
+
+    Gradient = derivative(input[i]);
+}
+```
+
+## Remark
+
+This examples are not the etalon of neural networks. They only describe basic ideas. 
+
+In examples you can see only **fully connected neural network** — neural network in which all neurons in layer have connections to all neurons in next layer. Very often some neurons have a few connections while other lots of them.
+
+Some neural network can exist even without neuron class, while other have classes for neurons, connections, layers etc.
+
+Neural network training is not just about adjusting weights, it also include adding/cutting some connection, adding/removing neurons to a layer, adding/removing layer etc.
 
 ## Glossary
 
 * **Terms**
+  - perceptron — is the simplest neural network possible: a computational model of a single neuron; sometimes synonym to neural network
   - layer — the cols where neurons are placed
   - input layer — the first layer of neurons
   - hidden layer — the middle layers of neurons
@@ -317,3 +389,8 @@ private double[] output(double[] input)
   - connection — the connection between the neurons through which energy is transmitted
   - connection weight — determines how strong is the connection between neurons 
   - linearly separable problem — problem that you can solve by divided it with one line.
+* **Names of function**
+  - Sum up (output) function — sum up all signal that neuron recieves
+  - Activation function — defines the threshold for the neuron activating
+  - Propagation (Feed forward) — algorithm for signal transmission from first to last layer
+  - Backpropagation — algorithm for determininng neuron's error and tune weight
