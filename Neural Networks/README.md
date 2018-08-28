@@ -374,11 +374,15 @@ for (int i = weights.Length - 1; i >= 0; --i)
 
 This examples are not the etalon of neural networks. They only describe basic ideas. 
 
-In examples you can see only **fully connected neural network** — neural network in which all neurons in layer have connections to all neurons in next layer. Very often some neurons have a few connections while other lots of them.
+In the examples you can see only **fully connected neural network** — neural network in which all neurons in layer have connections to all neurons in next layer. Very often some neurons have a few connections while other lots of them.
 
 Some neural network can exist even without neuron class, while other have classes for neurons, connections, layers etc.
 
 Neural network training is not just about adjusting weights, it also include adding/cutting some connection, adding/removing neurons to a layer, adding/removing layer etc.
+
+<p align="center">
+  <img src="/readme Imgs/neural network/NNStruct.png">
+</p>
 
 ## Glossary
 
