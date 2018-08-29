@@ -384,6 +384,8 @@ Neural network training is not just about adjusting weights, it also include add
   <img src="/readme Imgs/neural network/NNStruct.png">
 </p>
 
+See also, <a href = "https://towardsdatascience.com/the-mostly-complete-chart-of-neural-networks-explained-3fb6f2367464">*"The mostly complete chart of Neural Networks"*</a>.
+
 ## Glossary
 
 * **Terms**
