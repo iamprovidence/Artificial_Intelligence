@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Drawing;
 
@@ -71,22 +71,10 @@ namespace logicalOperatorsClassifier.Models
         {
             if (input.Length != inputAmount) throw new ArgumentException("Wrong amount of inputs");
 
-            return FeedForward(input);
+            return FeedForward(input).Last().ToArray();
         }
-        private double[] FeedForward(double[] input)
+        private Vector[] FeedForward(double[] input)
         {
-            Vector inputForNextLayer = new Vector(input);
-
-            for (int i = 0; i < weights.Length; ++i)
-            {
-                inputForNextLayer = (weights[i] * inputForNextLayer + biases[i]).TransformEach(aFunc.Func);
-            }
-
-            return inputForNextLayer.ToArray();
-        }
-        public void Train(double[] input, double[] target)
-        {
-            // inputs vector for backpropagination, also its almost GUESS method
             Vector[] inputForNextLayer = new Vector[neuronPerLayer.Length];
             inputForNextLayer[0] = new Vector(input);
 
@@ -94,6 +82,13 @@ namespace logicalOperatorsClassifier.Models
             {
                 inputForNextLayer[i + 1] = (weights[i] * inputForNextLayer[i] + biases[i]).TransformEach(aFunc.Func);
             }
+
+            return inputForNextLayer;
+        }
+        public void Train(double[] input, double[] target)
+        {
+            // inputs vector for backpropagination
+            Vector[] inputForNextLayer = FeedForward(input);
             // calc error
             double[] result = inputForNextLayer[inputForNextLayer.Length - 1].ToArray();
             double[] error = new double[result.Length];
