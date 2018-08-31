@@ -74,6 +74,12 @@ The connection has **weight**. It is usualy a value in range [-1; 1].
 
 Stronger connection transfer more signal.
 
+Firstly weight are random, then it may change. Work better if random values in range:
+
+<p align="center">
+  <img src="/readme Imgs/neural network/connection weight.png">
+</p>
+
 ### Layer
 
 Neurons are placed on **layers**:
@@ -378,7 +384,7 @@ In the examples you can see only **fully connected neural network** — neural n
 
 Some neural network can exist even without neuron class, while other have classes for neurons, connections, layers etc.
 
-Neural network training is not just about adjusting weights, it also include adding/cutting some connection, adding/removing neurons to a layer, adding/removing layer etc.
+Neural network training is not just about adjusting weights, it also include adding/cutting some connection, adding/removing neurons to a layer, adding/removing layer, changing an activation function (to all neural network or to each layer) etc.
 
 <p align="center">
   <img src="/readme Imgs/neural network/NNStruct.png">
