@@ -404,6 +404,7 @@ See also, <a href = "https://towardsdatascience.com/the-mostly-complete-chart-of
   - connection weight — determines how strong is the connection between neurons 
   - linearly separable problem — problem that you can solve by divided it with one line.
   - fully connected neural network — neural network in which all neurons in layer have connections to all neurons in next layer
+  - epoch — a neural network run through a testing data 
 * **Names of function**
   - Sum up (output) function — sum up all signal that neuron recieves
   - Activation function — defines the threshold for the neuron activating
