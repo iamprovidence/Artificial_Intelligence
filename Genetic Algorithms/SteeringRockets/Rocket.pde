@@ -151,14 +151,12 @@ class Rocket
     {
       // ...  just pick any and get an experiance
       this.steerTo(seeingObjects.get(floor(random(seeingObjects.size()))).getPosition());
-      return;
     }
     else
     {
       // ... or go somewhere else on distance you can see
       this.steerTo(new PVector(this.position.x + random(-seeDistance,seeDistance), 
                                this.position.y + random(-seeDistance,seeDistance)));
-      return;
     }
       
   }
