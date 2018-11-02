@@ -163,7 +163,7 @@ private int Step(float x)
 
 #### Output
 
-The the whole process(output) for a single neuron look like this :
+The whole process(output) for a single neuron look like this :
 <img src="/readme Imgs/neural network/neuron_output.svg"> 
 
 ```C#
