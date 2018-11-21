@@ -273,7 +273,7 @@ Now we want to think about bias as additional neuron in each layer except the la
 
 #### Propagation (Feed forward)
 
-As was mentioned previously, single neuron receives inputs and sends outputs with sum up and actibation functions help.
+As was mentioned previously, single neuron receives inputs and sends outputs with sum up and activation functions help.
 
 Propagation, also known as feed forward algorithm doing the same but not with one neuron but with whole layer of neurons.
 
