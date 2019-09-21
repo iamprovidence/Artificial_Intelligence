@@ -1,7 +1,7 @@
 class Neuron
 {
   // CONSTS
-  final private float leariningRate = 0.01;
+  final private float leariningRate = 0.25;
   // FIELDS
   private float[] weights;
   // CONSTRUCTORS
@@ -15,7 +15,6 @@ class Neuron
   }
   
   // METHODS
-
   void show(float x, float y, float w, float h)
   {
     // input 1
@@ -64,5 +63,15 @@ class Neuron
   {
     if (x > 0) return 1;
     else return -1;
+  }
+  private float guessY(float x)
+  {
+    float w1 = weights[0];
+    float w2 = weights[1];
+    
+    // w1*x + w2*y = 0
+    // w2*y = -w1*x
+    // y = -w1*x/w2
+    return - w1*x/w2;
   }
 }
