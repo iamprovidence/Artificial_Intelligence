@@ -46,6 +46,10 @@ void draw()
     noStroke();
     ellipse(point.X(), point.Y(), 6, 6);
   }
+  
+  strokeWeight(2);
+  stroke(255, 255, 0);
+  line(width/2, parceptron.guessY(width/2), width, parceptron.guessY(width));
 }
 void mouseClicked()
 {
